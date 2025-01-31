@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="style.scss">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>BledorPireci_Portfolio</title>
 </head>
 <body>
     <main>
-        <div class="hero-background">
+        <div class="hero-background" data-aos="zoom-in-left" data-aos-duration="800">
             <img src="assets/defProfile.png" alt="Profile">
         </div>
         <div class="container">
-            <div class="status-bar">
-                <div class="status-indicator">
+            <div class="status-bar" data-aos="slide-down" data-aos-duration="800">
+                <div class="status-indicator" data-aos="zoom-in" data-aos-delay="400">
                     <span class="status-dot"></span>
                     Open to work
                 </div>
-                <label class="switch">
+                <label class="switch" data-aos="zoom-in" data-aos-delay="600">
                     <span class="sun">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g fill="#ffd43b">
@@ -35,18 +36,18 @@
                     <input type="checkbox" class="input" id="darkmode-toggle">
                     <span class="slider"></span>
                 </label>
-                <a href="/BledorPireci_CV.pdf" target="_blank" class="download-cv">
+                <a href="/BledorPireci_CV.pdf" target="_blank" class="download-cv" data-aos="zoom-in" data-aos-delay="800">
                     <span>Download CV</span>
                 </a>
             </div>
 
-            <section id="home" class="hero">
-                <div class="hero-content">
+            <section id="home" class="hero" data-aos="fade-in" data-aos-duration="1000">
+                <div class="hero-content" data-aos="slide-right" data-aos-duration="1000">
                     <div class="hero-text">
-                        <h2>SOFTWARE DEVELOPER</h2>
-                        <h1 class="typewriter-name">Bledor Pireci</h1>
+                        <h2 data-aos="slide-up" data-aos-delay="200">SOFTWARE DEVELOPER</h2>
+                        <h1 class="typewriter-name" data-aos="zoom-in" data-aos-delay="400">Bledor Pireci</h1>
                         
-                        <div class="contact-info">
+                        <div class="contact-info" data-aos="slide-up" data-aos-delay="600">
                             <div class="contact-column">
                                 <a href="mailto:pireci.bledor@gmail.com" class="info-item">
                                     <i class="fa-regular fa-envelope"></i>
@@ -72,7 +73,7 @@
                 </div>
             </section>
 
-            <section id="summary" class="summary">
+            <section id="summary" class="summary" data-aos="fade-in" data-aos-duration="1000">
                 <h2>Summary</h2>
                 
                 <div class="summary-content">
@@ -102,11 +103,11 @@
                 </div>
             </section>
 
-            <section id="experience" class="experience">
+            <section id="experience" class="experience" data-aos="zoom-in" data-aos-duration="800">
                 <h2>Work Experience</h2>
                 
                 <div class="timeline">
-                    <div class="experience-item">
+                    <div class="experience-item" data-aos="slide-right" data-aos-delay="200">
                         <div class="experience-content">
                             <div class="role">
                                 <div class="title-row">
@@ -135,7 +136,7 @@
                         </div>
                     </div>
 
-                    <div class="experience-item">
+                    <div class="experience-item" data-aos="slide-right" data-aos-delay="400">
                         <div class="experience-content">
                             <div class="role">
                                 <div class="title-row">
@@ -169,7 +170,7 @@
                         </div>
                     </div>
 
-                    <div class="experience-item">
+                    <div class="experience-item" data-aos="slide-right" data-aos-delay="600">
                         <div class="experience-content">
                             <div class="role">
                                 <div class="title-row">
@@ -224,18 +225,18 @@
                 </div>
             </section>
 
-            <section id="skills" class="skills">
+            <section id="skills" class="skills" data-aos="zoom-in-up" data-aos-duration="800">
                 <h2>Skills & Tools</h2>
                 
                 <div class="skills-content">
                     <div class="skills-list">
-                        <div class="skill-item">Front-end Development</div>
-                        <div class="skill-item">Back-end Development</div>
-                        <div class="skill-item">Database Management</div>
-                        <div class="skill-item">API Development</div>
-                        <div class="skill-item">UI/UX Design</div>
-                        <div class="skill-item">Version Control</div>
-                        <div class="skill-item">Agile Development</div>
+                        <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">Front-end Development</div>
+                        <div class="skill-item" data-aos="zoom-in" data-aos-delay="400">Back-end Development</div>
+                        <div class="skill-item" data-aos="zoom-in" data-aos-delay="600">Database Management</div>
+                        <div class="skill-item" data-aos="zoom-in" data-aos-delay="800">API Development</div>
+                        <div class="skill-item" data-aos="zoom-in" data-aos-delay="1000">UI/UX Design</div>
+                        <div class="skill-item" data-aos="zoom-in" data-aos-delay="1200">Version Control</div>
+                        <div class="skill-item" data-aos="zoom-in" data-aos-delay="1400">Agile Development</div>
                     </div>
 
                     <div class="tools-section">
@@ -272,12 +273,20 @@
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
                                 <span>Git</span>
                             </div>
+                            <div class="tool">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                                <span>MySQL</span>
+                            </div>
+                            <div class="tool">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+                                <span>MongoDB</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="education" class="education">
+            <section id="education" class="education" data-aos="slide-up" data-aos-duration="800">
                 <h2>EDUCATION & CERTIFICATES</h2>
                 
                 <div class="education-items">
@@ -295,7 +304,7 @@
                 </div>
             </section>
 
-            <section id="links" class="links">
+            <section id="links" class="links" data-aos="zoom-in" data-aos-duration="800">
                 <h2>Links</h2>
                 
                 <div class="social-links">
@@ -361,6 +370,11 @@
             </a>
         </div>
     </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="./main.js"></script>
 </body>
 </html>
