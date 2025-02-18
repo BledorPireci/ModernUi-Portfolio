@@ -1,4 +1,3 @@
-import './style.scss'
 
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.bottom-nav a');
