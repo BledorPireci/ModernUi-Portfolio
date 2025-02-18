@@ -4,15 +4,21 @@
     { "src": "*.html", "use": "@vercel/static" }
   ],
   "routes": [
+    { 
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
     {
-      "src": "/main.js",
+      "src": "/(.*)\\.js$",
       "headers": {
         "Content-Type": "application/javascript"
-      }
+      },
+      "continue": true
     },
     {
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ]
+  ],
+  "outputDirectory": "dist"
 }
