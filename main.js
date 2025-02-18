@@ -70,3 +70,10 @@ window.addEventListener('scroll', function() {
         heroBackground.style.filter = `blur(${blurAmount}px)`;
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize AOS
+    AOS.init();
+
+    // Any other JavaScript functionality
+});

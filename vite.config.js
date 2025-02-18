@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 export default defineConfig({
+  root: './',
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -12,4 +14,7 @@ export default defineConfig({
     },
   },
   publicDir: 'public',
+  server: {
+    open: true
+  }
 })
