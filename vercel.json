@@ -4,7 +4,15 @@
     { "src": "*.html", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/main.js", "dest": "/main.js" },
-    { "src": "/(.*)", "dest": "/$1" }
+    {
+      "src": "/main.js",
+      "headers": {
+        "Content-Type": "application/javascript"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
