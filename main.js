@@ -1,6 +1,24 @@
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.bottom-nav a');
 
+// Helper function for experience and skills sections
+function handleSpecialSections(sectionId, element, isScrolling = false) {
+    if (sectionId === 'experience' || sectionId === 'skills') {
+        if (isScrolling) {
+            const sectionTitle = element.querySelector('h1, h2');
+            if (sectionTitle) {
+                sectionTitle.style.position = 'relative';
+                sectionTitle.style.marginTop = '2rem';
+            }
+        } else {
+            const offset = 80;
+            return element.offsetTop - offset;
+        }
+    }
+    return null;
+}
+
+// Combined scroll and navigation handling
 window.addEventListener('scroll', () => {
     let current = '';
     
@@ -10,14 +28,7 @@ window.addEventListener('scroll', () => {
         
         if (rect.top <= viewportMiddle + 100 && rect.bottom >= viewportMiddle - 100) {
             current = section.getAttribute('id');
-            
-            if (current === 'experience' || current === 'skills') {
-                const sectionTitle = section.querySelector('h1, h2');
-                if (sectionTitle) {
-                    sectionTitle.style.position = 'relative';
-                    sectionTitle.style.marginTop = '2rem';
-                }
-            }
+            handleSpecialSections(current, section, true);
         }
     });
 
@@ -32,7 +43,7 @@ window.addEventListener('scroll', () => {
 const darkModeToggle = document.getElementById('darkmode-toggle');
 const body = document.body;
 
-
+// Add console log to check if element is found
 if (!darkModeToggle) {
     console.error('Dark mode toggle element not found!');
 } else {
@@ -45,11 +56,13 @@ if (savedTheme === 'dark') {
     darkModeToggle.checked = true;
 }
 
+// Add click event listener in addition to change
 darkModeToggle.addEventListener('click', function(e) {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent event bubbling
 });
 
 darkModeToggle.addEventListener('change', function() {
+    console.log('Toggle changed:', this.checked); // Debug log
     if (this.checked) {
         body.classList.add('dark-theme');
         localStorage.setItem('theme', 'dark');
@@ -76,10 +89,13 @@ window.addEventListener('scroll', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize AOS
     AOS.init();
 
+    // Any other JavaScript functionality
 });
 
+// Updated click event handler
 document.querySelectorAll('.bottom-nav a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -87,12 +103,10 @@ document.querySelectorAll('.bottom-nav a').forEach(link => {
         const targetSection = document.getElementById(targetId);
         
         if (targetSection) {
-            if (targetId === 'experience' || targetId === 'skills') {
-                const offset = 0;
-                const targetPosition = targetSection.offsetTop - offset;
-                
+            const specialOffset = handleSpecialSections(targetId, targetSection);
+            if (specialOffset !== null) {
                 window.scrollTo({
-                    top: targetPosition,
+                    top: specialOffset,
                     behavior: 'smooth'
                 });
             } else {
