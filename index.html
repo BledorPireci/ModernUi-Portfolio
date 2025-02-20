@@ -36,8 +36,7 @@
                     <input type="checkbox" class="input" id="darkmode-toggle">
                     <span class="slider"></span>
                 </label>
-                <a href="./public/Bledor_Pireci_CV.pdf" target="_blank" class="download-cv" onclick="handleDownload(event)" style="position: relative; z-index: 10;">
-                    
+                <a href="/BledorPireci_CV.pdf" target="_blank" class="download-cv" onclick="handleDownload(event)" style="position: relative; z-index: 10;">
                     <span>Download CV</span>
                 </a>
             </div>
@@ -387,7 +386,7 @@
         AOS.init();
         
         function handleDownload(event) {
-            fetch('./public/Bledor_Pireci_CV.pdf')
+            fetch('/BledorPireci_CV.pdf')
                 .then(response => {
                     if (!response.ok) {
                         event.preventDefault();
