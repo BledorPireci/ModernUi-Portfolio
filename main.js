@@ -1,4 +1,3 @@
-
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.bottom-nav a');
 
@@ -9,8 +8,16 @@ window.addEventListener('scroll', () => {
         const rect = section.getBoundingClientRect();
         const viewportMiddle = window.innerHeight / 2;
         
-        if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
+        if (rect.top <= viewportMiddle + 100 && rect.bottom >= viewportMiddle - 100) {
             current = section.getAttribute('id');
+            
+            if (current === 'experience' || current === 'skills') {
+                const sectionTitle = section.querySelector('h1, h2');
+                if (sectionTitle) {
+                    sectionTitle.style.position = 'relative';
+                    sectionTitle.style.marginTop = '2rem';
+                }
+            }
         }
     });
 
@@ -25,7 +32,7 @@ window.addEventListener('scroll', () => {
 const darkModeToggle = document.getElementById('darkmode-toggle');
 const body = document.body;
 
-// Add console log to check if element is found
+
 if (!darkModeToggle) {
     console.error('Dark mode toggle element not found!');
 } else {
@@ -38,13 +45,11 @@ if (savedTheme === 'dark') {
     darkModeToggle.checked = true;
 }
 
-// Add click event listener in addition to change
 darkModeToggle.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
 });
 
 darkModeToggle.addEventListener('change', function() {
-    console.log('Toggle changed:', this.checked); // Debug log
     if (this.checked) {
         body.classList.add('dark-theme');
         localStorage.setItem('theme', 'dark');
@@ -71,8 +76,28 @@ window.addEventListener('scroll', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize AOS
     AOS.init();
 
-    // Any other JavaScript functionality
+});
+
+document.querySelectorAll('.bottom-nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+            if (targetId === 'experience' || targetId === 'skills') {
+                const offset = 0;
+                const targetPosition = targetSection.offsetTop - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            } else {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
 });
