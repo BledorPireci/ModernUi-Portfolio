@@ -20,106 +20,16 @@ body {
     padding: 0;
     background-color: var(--background);
     color: var(--text);
-    
-    &.dark-theme {
-        --background: #121212;
-        --text: #ffffff;
-        --accent: #64B5F6;
-        --card-bg: #1E1E1E;
-        --nav-bg: rgba(18, 18, 18, 0.8);
-        --border: #333333;
-        
-        .hero-background {
-            opacity: 0.7;
-        }
-        
-        .bottom-nav {
-            background: #f5f5f7;
-            
-            a {
-                color: #333333;
-                
-                &.active {
-                    background: var(--accent);
-                    color: white;
-                }
-                
-                &:not(.active):hover {
-                    background: rgba(0, 0, 0, 0.05);
-                }
-            }
-        }
-        
-        .social-links .social-link svg[fill="#181717"] {
-            fill: #ffffff;
-        }
-        
-        .footer-contact-info .footer-contact-item {
-            color: var(--text) !important;
-            
-            &:hover {
-                color: var(--accent) !important;
-            }
-        }
-    }
-}
-
-@mixin responsive($breakpoint) {
-    @if $breakpoint == desktop {
-        @media (max-width: 992px) { @content; }
-    } @else if $breakpoint == tablet {
-        @media (max-width: 768px) { @content; }
-    } @else if $breakpoint == mobile {
-        @media (max-width: 576px) { @content; }
-    } @else if $breakpoint == small-mobile {
-        @media (max-width: 375px) { @content; }
-    }
-}
-
-@mixin section-padding {
-    padding: 120px 0;
-    
-    @include responsive(desktop) {
-        min-height: 70vh;
-        padding: 80px 0;
-    }
-    
-    @include responsive(tablet) {
-        min-height: 60vh;
-        padding: 60px 0;
-    }
-    
-    @include responsive(mobile) {
-        min-height: 50vh;
-        padding: 40px 0;
-    }
-}
-
-@mixin section-heading {
-    color: var(--accent);
-    font-size: 48px;
-    margin-bottom: 48px;
-    font-weight: 700;
-    
-    @include responsive(tablet) {
-        font-size: 36px;
-    }
-    
-    @include responsive(mobile) {
-        font-size: 30px;
-        text-align: center;
-    }
 }
 
 .container {
     position: relative;
-    max-width: 1400px;
+    max-width: 1400px;  
     margin: 0 auto;
     padding: 0 24px;
     z-index: 1;
     background: transparent;
-    
-    @include responsive(mobile) {
+    @media (max-width: 576px) {
         padding: 0 12px;
     }
 }
@@ -144,7 +54,7 @@ body {
             display: inline-block;
             width: 8px;
             height: 8px;
-            background-color: #34D399;
+            background-color: #34D399; 
             border-radius: 50%;
             margin-right: 8px;
             position: relative;
@@ -180,20 +90,20 @@ body {
         }
         
         &::before {
-            content: "\f019";
+            content: "\f019"; 
             font-family: "Font Awesome 6 Free";
             font-weight: 600;
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, calc(-50% - 20px));
+            transform: translate(-50%, calc(-50% - 20px)); 
             opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         &:hover {
             span {
-                transform: translateY(20px);
+                transform: translateY(20px); 
                 opacity: 0;
             }
             
@@ -204,7 +114,7 @@ body {
         }
     }
 
-    @include responsive(tablet) {
+    @media (max-width: 768px) {
         position: absolute;
         top: 24px;
         left: 24px;
@@ -230,7 +140,7 @@ body {
 
         .switch {
             grid-area: switch;
-            justify-self: end;
+            justify-self: end; 
             transform: scale(0.9);
         }
 
@@ -242,7 +152,7 @@ body {
         }
     }
 
-    @include responsive(mobile) {
+    @media (max-width: 576px) {
         top: 16px;
         gap: 12px;
 
@@ -261,7 +171,6 @@ body {
     }
 }
 
-// Hero Section
 .hero-background {
     position: fixed;
     top: 10%;
@@ -286,12 +195,13 @@ body {
         transform: translateX(-200px);
     }
 
-    @include responsive(desktop) {
+    @media (max-width: 992px) {
         top: 10%;
         height: 100vh;
         left: 31.5%;
 
         img {
+            position: absolute;
             right: auto;
             left: 50%;
             transform: translateX(-50%);
@@ -301,7 +211,7 @@ body {
         }
     }
 
-    @include responsive(tablet) {
+    @media (max-width: 768px) {
         height: 100vh;
         img {
             left: 50%;
@@ -310,7 +220,7 @@ body {
         }
     }
 
-    @include responsive(mobile) {
+    @media (max-width: 576px) {
         height: 100vh;
         img {
             left: 43%;
@@ -324,19 +234,19 @@ body {
     min-height: 100vh;
     display: flex;
     
-    @include responsive(desktop) {
+    @media (max-width: 992px) {
         min-height: 70vh;
     }
 
-    @include responsive(tablet) {
+    @media (max-width: 768px) {
         min-height: 70vh;
-        padding: 50px 0;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 
-    @include responsive(mobile) {
+    @media (max-width: 576px) {
         min-height: 70vh;
     }
-
     .hero-content {
         display: flex;
         justify-content: flex-start;
@@ -347,32 +257,32 @@ body {
 
     .hero-text {
         width: 75%;
-        
-        @include responsive(small-mobile) {
+        @media (max-width: 375px) {
             width: 80%;
         }
-
         h2 {
             color: var(--accent);
             font-size: 24px;
-            margin: 0 0 16px;
+            margin: 0;
             font-weight: 600;
             letter-spacing: 0.5px;
+            margin-bottom: 16px;
             background: none;
             
-            @include responsive(tablet) {
+            @media (max-width: 768px) {
                 font-size: 24px;
             }
-            @include responsive(mobile) {
+            @media (max-width: 576px) {
                 font-size: 20px;
             }
         }
 
         h1 {
             font-size: 72px;
-            margin: 0 0 48px;
+            margin: 0;
             font-weight: 700;
             letter-spacing: -2px;
+            margin-bottom: 48px;
             background: none;
 
             &.typewriter-name {
@@ -382,7 +292,7 @@ body {
                 display: inline-block;
                 width: fit-content;
                 max-width: 0;
-                animation: typing-name 1s steps(12) forwards;
+                animation: typing-name 2s steps(12) 2s forwards;
                 
                 &::after {
                     content: '';
@@ -396,70 +306,71 @@ body {
                     animation-delay: 2s;
                 }
                 
-                @include responsive(tablet) {
+                @media (max-width: 768px) {
                     font-size: 56px;
                     animation: typing-name-768 2s steps(12) 2s forwards;
                     
                     &::after {
                         top: 6px;
                         height: calc(100% - 12px);
+                        animation-delay: 2s;
                     }
                 }
                 
-                @include responsive(mobile) {
+                @media (max-width: 576px) {
                     font-size: 42px;
                     animation: typing-name-576 2s steps(12) 2s forwards;
                     
                     &::after {
                         top: 5px;
                         height: calc(100% - 10px);
+                        animation-delay: 2s;
                     }
                 }
                 
-                @include responsive(small-mobile) {
+                @media (max-width: 375px) {
                     font-size: 32px;
                     animation: typing-name-375 2s steps(12) 2s forwards;
                     
                     &::after {
                         top: 4px;
                         height: calc(100% - 8px);
+                        animation-delay: 2s;
                     }
                 }
             }
         }
     }
-}
 
-// Contact Grid
-.contact-grid {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 16px 48px;
-    margin-top: 32px;
-    
-    .info-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--text);
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 500;
+    .contact-grid {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 16px 48px;
+        margin-top: 32px;
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
 
-        i {
-            color: var(--accent);
-            font-size: 20px;
-            width: 20px;
-            text-align: center;
-        }
+            i {
+                color: var(--accent);
+                font-size: 20px;
+                width: 20px;
+                text-align: center;
+            }
 
-        &:hover {
-            color: var(--accent);
+            &:hover {
+                color: var(--accent);
+            }
         }
     }
 }
 
-// Bottom Navigation
 .bottom-nav {
     position: fixed !important;
     bottom: 24px !important;
@@ -504,7 +415,7 @@ body {
         }
     }
 
-    @include responsive(tablet) {
+    @media (max-width: 768px) {
         padding: 6px;
         gap: 8px;
         
@@ -564,7 +475,7 @@ body {
         }
     }
 
-    @include responsive(mobile) {
+    @media (max-width: 576px) {
         .contact-column {
             .info-item {
                 display: flex;
@@ -582,7 +493,7 @@ body {
     }
 }
 
-@include responsive(tablet) {
+@media (max-width: 768px) {
     .contact-info {
         flex-direction: column;
         gap: 1rem;
@@ -590,10 +501,35 @@ body {
 }
 
 .summary {
-    @include section-padding;
+    padding: 80px 0;
+    min-height: calc(100vh - 160px);
     
+    @media (max-width: 992px) {
+        min-height: calc(100vh - 120px);
+        padding: 60px 0;
+    }
+
+    @media (max-width: 768px) {
+        min-height: calc(100vh - 100px);
+        padding: 50px 0;
+    }
+
+    @media (max-width: 576px) {
+        min-height: calc(100vh - 80px);
+        padding: 40px 0;
+    }
     h2 {
-        @include section-heading;
+        color: var(--accent);
+        font-size: 48px;
+        margin-bottom: 48px;
+        font-weight: 700;
+        @media (max-width: 768px) {
+            font-size: 36px;
+        }
+        @media (max-width: 576px) {
+            font-size: 30px;
+            text-align: center;
+        }
     }
 
     .summary-content {
@@ -639,32 +575,71 @@ body {
 
 .experience,
 .skills {
-    @include section-padding;
+    padding: 120px 0;
     
     h2 {
-        @include section-heading;
+        position: relative;
+        margin-top: 2rem;
+        color: var(--accent);
+        font-size: 48px;
+        margin-bottom: 48px;
+        font-weight: 700;
+        
+        @media (max-width: 768px) {
+            font-size: 36px;
+        }
+        
+        @media (max-width: 576px) {
+            font-size: 30px;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 992px) {
+        min-height: 70vh;
+        padding: 80px 0;
+    }
+
+    @media (max-width: 768px) {
+        min-height: 60vh;
+        padding: 60px 0;
+    }
+
+    @media (max-width: 576px) {
+        min-height: 50vh;
+        padding: 40px 0;
     }
 }
 
 .experience {
     padding: 120px 0;
-    @include responsive(desktop) {
+    @media (max-width: 992px) {
         min-height: 70vh;
         padding: 80px 0;
     }
 
-    @include responsive(tablet) {
+    @media (max-width: 768px) {
         min-height: 60vh;
         padding: 60px 0;
     }
 
-    @include responsive(mobile) {
-        min-height: 50vh;
+    @media (max-width: 576px) {
+        min-height: 60vh;
         padding: 40px 0;
     }
     
     h2 {
-        @include section-heading;
+        color: var(--accent);
+        font-size: 48px;
+        margin-bottom: 48px;
+        font-weight: 700;
+        @media (max-width: 768px) {
+            font-size: 36px;
+        }
+        @media (max-width: 576px) {
+            font-size: 30px;
+            text-align: center;
+        }
     }
 
     .timeline {
@@ -680,7 +655,7 @@ body {
             background-color: var(--accent);
         }
 
-        @include responsive(tablet) {
+        @media (max-width: 768px) {
             &::before {
                 left: 0;
                 top: 12px;
@@ -690,7 +665,7 @@ body {
 
     .experience-item {
         position: relative;
-        padding-left: 24px;
+        padding-left: 48px;
         margin-bottom: 64px;
         
         &::before {
@@ -767,8 +742,6 @@ body {
                         object-fit: cover;
                         object-position: top;
                         transition: all 3s ease-in-out;
-                        will-change: transform;
-                        transform: translateZ(0);
                     }
                     
                     &:hover:not(.coming-soon) img {
@@ -839,34 +812,6 @@ body {
                         }
                     }
                 }
-
-                @include responsive(tablet) {
-                    grid-template-columns: 1fr;
-                    justify-items: left;
-                    gap: 24px;
-                    padding-right: 24px;
-
-                    .project-card {
-                        width: 320px;
-                        max-width: calc(100vw - 72px);
-
-                        img {
-                            height: 180px;
-                        }
-
-                        .project-info {
-                            padding: 16px;
-
-                            h5 {
-                                font-size: 18px;
-                            }
-
-                            p {
-                                font-size: 13px;
-                            }
-                        }
-                    }
-                }
             }
 
             .responsibilities {
@@ -892,9 +837,78 @@ body {
                         background-color: var(--accent);
                     }
                 }
+            }
+        }
 
-                @include responsive(mobile) {
-                    gap: 8px;
+        @media (max-width: 768px) {
+            padding-left: 25px;
+
+            &::before {
+                left: -4px;
+            }
+        }
+
+        .experience-content {
+            .role {
+                @media (max-width: 576px) {
+                    .title-row {
+                        h3 {
+                            font-size: 20px; // Smaller font on mobile
+                            line-height: 1.3;
+                        }
+
+                        .date {
+                            font-size: 14px;
+                        }
+                    }
+
+                    .company {
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            .description {
+                @media (max-width: 576px) {
+                    font-size: 15px;
+                }
+            }
+
+            .projects-grid {
+                @media (max-width: 768px) {
+                    grid-template-columns: 1fr;
+                    justify-items: left;
+                    gap: 24px;
+                    padding-right: 24px;
+
+                    .project-card {
+                        width: 320px;
+                        max-width: calc(100vw - 72px);
+
+                        img {
+                            height: 180px;
+                            width: 100%;
+                            object-fit: cover;
+                        }
+
+                        .project-info {
+                            padding: 16px;
+
+                            h5 {
+                                font-size: 18px;
+                            }
+
+                            p {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .responsibilities {
+                @media (max-width: 576px) {
+                    gap: 8px; // Reduce gap on mobile
 
                     .responsibility {
                         font-size: 15px;
@@ -912,10 +926,34 @@ body {
 }
 
 .skills {
-    @include section-padding;
+    padding: 120px 0;
+    @media (max-width: 992px) {
+        min-height: 70vh;
+        padding: 80px 0;
+    }
+
+    @media (max-width: 768px) {
+        min-height: 60vh;
+        padding: 60px 0;
+    }
+
+    @media (max-width: 576px) {
+        min-height: 60vh;
+        padding: 40px 0;
+    }
     
     h2 {
-        @include section-heading;
+        color: var(--accent);
+        font-size: 48px;
+        margin-bottom: 48px;
+        font-weight: 700;
+        @media (max-width: 768px) {
+            font-size: 36px;
+        }
+        @media (max-width: 576px) {
+            font-size: 30px;
+            text-align: center;
+        }
     }
 
     .skills-content {
@@ -926,7 +964,6 @@ body {
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 24px;
             margin-bottom: 48px;
-
             .skill-item {
                 font-size: 16px;
                 font-weight: 500;
@@ -942,10 +979,13 @@ body {
                     width: 12px;
                     height: 2px;
                     background-color: var(--accent);
+                    @media (max-width: 576px) {
+                        
+                    }
                 }
             }
 
-            @include responsive(mobile) {
+            @media (max-width: 576px) {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
                 gap: 16px;
                 padding: 0 8px;
@@ -960,7 +1000,7 @@ body {
                 }
             }
 
-            @include responsive(small-mobile) {
+            @media (max-width: 375px) {
                 width: 280px;
                 padding-left: 55px;
                 
@@ -988,56 +1028,34 @@ body {
                 align-items: center;
                 gap: 8px;
                 text-align: center;
-                animation: toolFadeIn 0.5s ease forwards;
-                opacity: 0;
-                transition: transform 0.3s ease;
-
-                @for $i from 1 through 8 {
-                    &:nth-child(#{$i}) {
-                        animation-delay: $i * 0.1s;
-                    }
-                }
 
                 img {
                     width: 48px;
                     height: 48px;
                     object-fit: contain;
-                    transition: transform 0.3s ease;
                 }
 
                 span {
                     font-size: 14px;
                     color: var(--text);
                 }
-
-                &:hover {
-                    transform: translateY(-5px);
-
-                    img {
-                        transform: scale(1.1) rotate(5deg);
-                    }
-
-                    span {
-                        opacity: 1;
-                    }
-                }
             }
+        }
 
-            @include responsive(small-mobile) {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-                width: 280px;
-                margin: 48px auto 0;
+        @media (max-width: 375px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            width: 280px;
+            margin: 48px auto 0;
+            
+            .tool {
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
                 
-                .tool {
-                    img {
-                        width: 40px;
-                        height: 40px;
-                    }
-                    
-                    span {
-                        font-size: 13px;
-                    }
+                span {
+                    font-size: 13px;
                 }
             }
         }
@@ -1045,10 +1063,33 @@ body {
 }
 
 .education {
-    @include section-padding;
-    
+    padding: 120px 0;
+    @media (max-width: 992px) {
+        min-height: 70vh;
+        padding: 80px 0;
+    }
+
+    @media (max-width: 768px) {
+        min-height: 60vh;
+        padding: 60px 0;
+    }
+
+    @media (max-width: 576px) {
+        min-height: 60vh;
+        padding: 40px 0;
+    }
     h2 {
-        @include section-heading;
+        color: var(--accent);
+        font-size: 48px;
+        margin-bottom: 48px;
+        font-weight: 700;
+        @media (max-width: 768px) {
+            font-size: 36px;
+        }
+        @media (max-width: 576px) {
+            font-size: 30px;
+            text-align: center;
+        }
     }
 
     .education-items {
@@ -1075,7 +1116,7 @@ body {
             }
         }
 
-        @include responsive(mobile) {
+        @media (max-width: 576px) {
             display: flex;
             flex-direction: column;
             gap: 2rem;
@@ -1084,7 +1125,6 @@ body {
             .education-item {
                 text-align: center;
                 margin-bottom: 0;
-                
                 h3 {
                     font-size: 22px;
                     margin-bottom: 0.5rem;
@@ -1102,7 +1142,7 @@ body {
             }
         }
 
-        @include responsive(small-mobile) {
+        @media (max-width: 375px) {
             gap: 1.5rem;
             
             .education-item {
@@ -1127,32 +1167,39 @@ body {
 .links {
     padding: 120px 0 324px 0;
     
-    @include responsive(desktop) {
+    @media (max-width: 992px) {
         padding: 80px 0 0 0;
     }
 
-    @include responsive(tablet) {
+    @media (max-width: 768px) {
         padding: 60px 0 0 0;
     }
 
-    @include responsive(mobile) {
+    @media (max-width: 576px) {
         padding: 40px 0 0 0;
     }
-
     h2 {
-        @include section-heading;
+        color: var(--accent);
+        font-size: 48px;
+        margin-bottom: 48px;
+        font-weight: 700;
+        @media (max-width: 768px) {
+            font-size: 36px;
+        }
+        @media (max-width: 576px) {
+            font-size: 30px;
+            text-align: center;
+        }
     }
 
     .social-links {
         display: flex;
         gap: 24px;
         margin-bottom: 48px;
-
-        @include responsive(mobile) {
+        @media (max-width: 576px){
             justify-content: center;
             align-items: center;
         }
-
         .social-link {
             svg {
                 width: 32px;
@@ -1171,12 +1218,10 @@ body {
         flex-direction: column;
         gap: 1rem;
         margin-top: 2rem;
-
-        @include responsive(mobile) {
+        @media (max-width: 576px){
             justify-content: center;
             align-items: center;
         }
-
         .footer-contact-item {
             display: flex;
             align-items: center;
@@ -1192,7 +1237,7 @@ body {
                 flex-shrink: 0;
             }
 
-            @include responsive(mobile) {
+            @media (max-width: 576px) {
                 justify-content: flex-start;
                 width: fit-content;
                 
@@ -1203,7 +1248,7 @@ body {
             }
 
             &:hover {
-                color: #00A3FF;
+                    color: #00A3FF;
             }
         }
     }
@@ -1253,26 +1298,26 @@ nav {
         height: 26px;
         width: 50px;
         transform: scale(1.1);
+    }
 
-        i {
+    label i {
+        color: #f1c40f;
+        transition: 0.3s;
+        &.fa-moon {
             color: #f1c40f;
-            transition: 0.3s;
-            &.fa-moon {
-                color: #f1c40f;
-            }
         }
+    }
 
-        &::after {
-            background-color: #fff;
-            border-radius: 50%;
-            content: "";
-            height: 20px;
-            left: 3px;
-            position: absolute;
-            top: 3px;
-            transition: 0.3s;
-            width: 20px;
-        }
+    label::after {
+        background-color: #fff;
+        border-radius: 50%;
+        content: "";
+        height: 20px;
+        left: 3px;
+        position: absolute;
+        top: 3px;
+        transition: 0.3s;
+        width: 20px;
     }
 
     input:checked + label {
@@ -1358,15 +1403,27 @@ nav {
 }
 
 @keyframes rotate {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes tilt {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-10deg); }
-    75% { transform: rotate(10deg); }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 body.dark-theme {
@@ -1540,13 +1597,21 @@ body.dark-theme {
 }
 
 @keyframes lineGrow {
-    from { height: 0; }
-    to { height: 100%; }
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
 }
 
 @keyframes textReveal {
-    from { clip-path: inset(0 100% 0 0); }
-    to { clip-path: inset(0 0 0 0); }
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
 }
 
 .typewriter-name {
@@ -1554,7 +1619,18 @@ body.dark-theme {
     border-right: 2px solid var(--text);
     white-space: nowrap;
     margin: 0;
-    animation: typing-name 1s steps(12) forwards;
+    animation: 
+        typing-name 2s steps(12) 2s,
+        blink-caret-name 0.75s step-end infinite;
+    animation-fill-mode: forwards;
+
+    @media (max-width: 768px) {
+        font-size: 90%;
+    }
+    
+    @media (max-width: 576px) {
+        font-size: 80%;
+    }
 }
 
 @keyframes typing-name {
@@ -1587,38 +1663,28 @@ body.dark-theme {
 .skills,
 .education,
 .links {
-    @include section-padding;
+    @media (max-width: 992px) {
+        min-height: 70vh;
+    }
+
+    @media (max-width: 768px) {
+        min-height: 60vh;
+    }
+
+    @media (max-width: 576px) {
+        min-height: 50vh;
+    }
 }
 
 [data-aos] {
-    transition-duration: 600ms !important;
-    transition-delay: 0s !important;
+    pointer-events: none; 
+}
+[data-aos].aos-animate {
+    pointer-events: auto; 
 }
 
 .aos-animate {
     will-change: transform, opacity;
-}
-
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-.tool {
-    transition: transform 0.3s ease;
-    img {
-        transition: transform 0.3s ease;
-    }
-}
-
-@include responsive(mobile) {
-    .hero, .summary, .experience, .skills, .education, .links {
-        min-height: 60vh;
-        padding: 60px 0;
-    }
 }
 
 
