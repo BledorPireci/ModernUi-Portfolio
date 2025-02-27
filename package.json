@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:css && npm run build:js",
+    "clean": "rmdir /s /q dist 2>nul || exit 0",
+    "build": "npm run clean && mkdir dist && copy index.html dist\\ && xcopy /E /I assets dist\\assets && npm run build:css && npm run build:js",
     "preview": "vite preview",
-    "build:css": "sass style.scss style.min.css --style=compressed",
-    "build:js": "terser main.js -o main.min.js --compress --mangle",
-    "watch:css": "sass style.scss style.min.css --watch --style=compressed"
+    "build:css": "sass style.scss dist/style.min.css --style=compressed",
+    "build:js": "terser main.js -o dist/main.min.js --compress --mangle",
+    "watch:css": "sass style.scss dist/style.min.css --watch --style=compressed"
   },
   "devDependencies": {
     "csso": "^5.0.5",
