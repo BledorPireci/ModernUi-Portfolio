@@ -1,7 +1,6 @@
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.bottom-nav a');
 
-// Helper function for experience and skills sections
 function handleSpecialSections(sectionId, element, isScrolling = false) {
     if (sectionId === 'experience' || sectionId === 'skills') {
         if (isScrolling) {
@@ -18,37 +17,43 @@ function handleSpecialSections(sectionId, element, isScrolling = false) {
     return null;
 }
 
-// Combined scroll and navigation handling
-window.addEventListener('scroll', () => {
-    let current = '';
-    
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const viewportMiddle = window.innerHeight / 2;
-        
-        if (rect.top <= viewportMiddle + 100 && rect.bottom >= viewportMiddle - 100) {
-            current = section.getAttribute('id');
-            handleSpecialSections(current, section, true);
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
-            link.classList.add('active');
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        disable: window.innerWidth < 768, 
+        once: true, 
+        offset: 100,
+        duration: 600, 
+        delay: 0 
     });
 });
+
+let isScrolling;
+window.addEventListener('scroll', () => {
+    window.clearTimeout(isScrolling);
+
+    isScrolling = setTimeout(() => {
+        let current = '';
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const viewportMiddle = window.innerHeight / 2;
+            
+            if (rect.top <= viewportMiddle + 100 && rect.bottom >= viewportMiddle - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    }, 50);
+}, { passive: true });
 
 const darkModeToggle = document.getElementById('darkmode-toggle');
 const body = document.body;
 
-// Add console log to check if element is found
-if (!darkModeToggle) {
-    console.error('Dark mode toggle element not found!');
-} else {
-    console.log('Dark mode toggle found:', darkModeToggle);
-}
 
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
@@ -56,13 +61,12 @@ if (savedTheme === 'dark') {
     darkModeToggle.checked = true;
 }
 
-// Add click event listener in addition to change
 darkModeToggle.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
 });
 
 darkModeToggle.addEventListener('change', function() {
-    console.log('Toggle changed:', this.checked); // Debug log
+    console.log('Toggle changed:', this.checked); 
     if (this.checked) {
         body.classList.add('dark-theme');
         localStorage.setItem('theme', 'dark');
@@ -88,14 +92,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize AOS
-    AOS.init();
-
-    // Any other JavaScript functionality
-});
-
-// Updated click event handler
 document.querySelectorAll('.bottom-nav a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
