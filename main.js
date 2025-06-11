@@ -2,7 +2,7 @@ const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.bottom-nav a');
 
 function handleSpecialSections(sectionId, element, isScrolling = false) {
-    if (sectionId === 'experience' || sectionId === 'skills') {
+    if (sectionId === 'experience' || sectionId === 'skills' ) {
         if (isScrolling) {
             const sectionTitle = element.querySelector('h1, h2');
             if (sectionTitle) {
